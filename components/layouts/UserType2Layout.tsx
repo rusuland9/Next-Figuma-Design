@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import HeroSection from "../sections/HeroSection";
 import TextImageSection from "@/components/sections/TextImageSection";
 import FeatureSlider from "../sections/FeatureSlider";
-import FeatureGrid from "../sections/FeatureGrid";
 import FeatureSpotlight from "../sections/FeatureSpotlight";
 import Testimonials from "../sections/Testimonial";
 
@@ -58,8 +57,6 @@ export default function UserType2Layout({ page }: UserType2LayoutProps) {
         );
       case "sections.feature-slider":
         return <FeatureSlider key={key} section={section} />;
-      case "sections.feature-grid":
-        return <FeatureGrid key={key} section={section} />;
       case "sections.feature-spotlight":
         return <FeatureSpotlight key={key} section={section} />;
       case "sections.testimonials":

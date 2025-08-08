@@ -9,15 +9,16 @@ import {
   BlocksRenderer,
   type BlocksContent,
 } from "@strapi/blocks-react-renderer";
-import { PrimaryButton, SecondaryButton } from "../ui/Buttons";
+import { PrimaryButton, TextButton } from "../ui/Buttons";
 import { JSX } from "react/jsx-runtime";
 
 interface TextImageSectionProps {
   section: Extract<Section, { __component: "sections.text-image" }>;
+  imageUrl?: string;
 }
 
 const TextImageSection: React.FC<TextImageSectionProps> = React.memo(
-  ({ section }) => {
+  ({ section, imageUrl }) => {
     const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
     const [isVisible, setIsVisible] = useState(false);
 
@@ -29,12 +30,6 @@ const TextImageSection: React.FC<TextImageSectionProps> = React.memo(
       () => (Array.isArray(section.richText) ? section.richText : []),
       [section.richText]
     );
-
-    const imageUrl = useMemo(
-      () => section.image?.formats?.large?.url || section.image?.url,
-      [section.image]
-    );
-
     const validButtons = useMemo(
       () =>
         section.button?.filter(
@@ -58,9 +53,8 @@ const TextImageSection: React.FC<TextImageSectionProps> = React.memo(
               const Tag = `h${level}` as keyof JSX.IntrinsicElements;
               return (
                 <Tag
-                  className={`text-${
-                    level + 2
-                  }xl font-bold mb-4 text-gray-900 dark:text-white`}
+                  className={`text-${level + 2
+                    }xl font-bold mb-4 text-gray-900 dark:text-white`}
                 >
                   {children}
                 </Tag>
@@ -165,13 +159,13 @@ const TextImageSection: React.FC<TextImageSectionProps> = React.memo(
             href={btn.buttonLink!}
           />
         ) : (
-          <SecondaryButton
+          <TextButton
             key={idx}
-            text={btn.buttonText!}
+            text={"Lorem ipsum dolor sit"!}
             href={btn.buttonLink!}
           >
-            {btn.buttonText} <ArrowRight className="ml-2 h-5 w-5" />
-          </SecondaryButton>
+            {"Lorem ipsum dolor sit"} <ArrowRight className="ml-2 h-5 w-5" />
+          </TextButton>
         );
       },
       [section]
@@ -180,24 +174,23 @@ const TextImageSection: React.FC<TextImageSectionProps> = React.memo(
     return (
       <section
         ref={ref}
-        className={`transition-opacity duration-700 px-6 py-16 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
+        className={`transition-opacity duration-700 bg-[#29252D] ${isVisible ? "opacity-100" : "opacity-0"
+          }`}
       >
+      
         <div
-          className={`max-w-7xl mx-auto flex flex-col-reverse  ${
-            section.reversed ? "md:flex-row" : "md:flex-row-reverse"
-          } items-center gap-10 md:gap-16`}
+          className={`max-w-7xl mx-auto flex flex-col-reverse  ${section.reversed ? "md:flex-row" : "md:flex-row-reverse"
+            } items-center gap-10 md:gap-16`}
         >
           {/* Text Content */}
-          <div className="w-full md:w-1/2 space-y-6 text-center md:text-left ">
+          <div className="w-full md:w-[30%] space-y-6 text-center md:text-left ">
             {section.title && (
-              <h2 className="text-sm font-bold uppercase tracking-wide text-black dark:text-primary">
+              <h2 className="text-sm uppercase tracking-wide text-black dark:text-primary">
                 {section.title}
               </h2>
             )}
             {section.subtitle && (
-              <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
+              <h3 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
                 {section.subtitle}
               </h3>
             )}
@@ -218,7 +211,7 @@ const TextImageSection: React.FC<TextImageSectionProps> = React.memo(
           </div>
 
           {/* Image */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-[70%]">
             <div className="aspect-[4/4] overflow-hidden relative ">
               {imageUrl ? (
                 <Image

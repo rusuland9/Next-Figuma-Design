@@ -42,7 +42,7 @@ export default function Navbar() {
     <>
       <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-[#29252D] backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
-          <nav className="flex items-center justify-between h-16 px-4">
+          <nav className="flex items-center justify-between h-24 px-4">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" onClick={closeMenu}>

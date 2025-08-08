@@ -174,7 +174,7 @@ export default function Ticker({ section }: TickerProps) {
                     )}
                   </React.Fragment>
                 ))}
-              </span>
+                  </span>
             </div>
           ))}
         </div>

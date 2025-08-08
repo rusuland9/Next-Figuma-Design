@@ -69,7 +69,7 @@ export default function RootLayout({
       >
         <Navbar />
         <TawkTo />
-        {/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} /> */}
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         <LogRocket />
         {children}
         <Footer />

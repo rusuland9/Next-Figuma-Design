@@ -19,7 +19,6 @@ export default function CareerJobListings({ section }: CareerJobListingsProps) {
   const [selectedCategory, setSelectedCategory] = useState("All categories");
   const [selectedLocation, setSelectedLocation] = useState("All locations");
   const [loading] = useState(false);
-
   const title = section.title || "Openings";
 
   const jobPositions = useMemo(

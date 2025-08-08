@@ -15,6 +15,18 @@ export interface StrapiImage {
   formats: StrapiImageFormats;
 }
 
+
+interface CatHeroSection {
+  __component: "sections.cat-hero";
+  id: number;
+  title: string;
+  subtitle: string;
+  buttonText?: string;
+  buttonLink?: string;
+  checkText: string;
+  image: StrapiImage | null;
+}
+
 interface HeroSection {
   __component: "sections.hero";
   id: number;
@@ -193,6 +205,7 @@ interface CareerJobListingsSection {
 // Union type for all section types
 export type Section =
   | HeroSection
+  | CatHeroSection
   | FeatureGridSection
   | TestimonialsSection
   | CallToActionSection

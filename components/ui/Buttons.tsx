@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 
 interface ButtonProps {
-  type?: 'primary' | 'secondary';
+  type?: 'primary' | 'secondary' | 'text';
   href?: string;
   onClick?: () => void;
   children: ReactNode;
@@ -21,8 +21,8 @@ export const Button = ({
   showArrow = false,
 }: ButtonProps) => {
   const baseClasses = `
-    inline-flex items-center justify-center px-8 py-3 rounded-full font-bold transition-all duration-300
-    relative overflow-hidden
+    inline-flex items-center justify-center px-6 py-1.5 rounded-full font-bold transition-all duration-300
+    relative overflow-hidden whitespace-nowrap
   `;
 
   const primaryClasses = `
@@ -45,7 +45,13 @@ export const Button = ({
     hover:[text-shadow:0_0_15px_rgba(254,60,114,1),0_0_15px_rgba(254,60,114,1)]
   `;
 
-  const buttonClasses = type === 'primary' ? primaryClasses : secondaryClasses;
+  const textClasses = `
+    inline-flex items-center justify-center font-medium text-white dark:text-white 
+    hover:text-gray-200 dark:hover:text-gray-200 hover:underline text-base transition-all duration-300
+    whitespace-nowrap
+  `;
+
+  const buttonClasses = type === 'primary' ? primaryClasses : type === 'secondary' ? secondaryClasses : textClasses;
 
   const content = (
     <>
@@ -120,7 +126,7 @@ export function TextButton({ href, text, className = "" }: GlobalButtonProps) {
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center font-medium text-[#FF00BF] dark:text-[#FF66D9] hover:text-[#D900A6] dark:hover:text-[#FF33CC] hover:underline text-base ${className}`}
+      className={`inline-flex items-center justify-center font-medium text-[#FF00BF] dark:text-[#FFFFFF] hover:text-[#D900A6] dark:hover:text-[#FF33CC] hover:underline text-base ${className}`}
     >
       {text}
     </Link>

@@ -15,7 +15,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   // Fetch the home page data using the controller
   const page = await getHomePageData();
-
   // If home page is not found, return 404
   if (!page) {
     notFound();

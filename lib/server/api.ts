@@ -28,6 +28,7 @@ export async function getPage(slug: string): Promise<PageData | null> {
       }
     );
 
+
     if (!res.ok) {
       console.error("Failed to fetch page:", res.statusText);
       return null;
@@ -57,7 +58,6 @@ export async function getGlobalSettings(): Promise<GlobalData | null> {
     }
 
     const response: StrapiResponse<GlobalData> = await res.json();
-    console.log("Global settings fetched:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching global settings:", error);
